@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/">
+  <s:Body xmlns="http://www.iata.org/IATA/EDIST">
+    <AirShoppingRQ>
+      <Document>
+        <MessageVersion>1.3</MessageVersion>
+      </Document>
+      <Party>
+        <Sender>
+          <TravelAgencySender>
+            <Name>test agent</Name>
+            <IATA_Number>00007066</IATA_Number> <!-- Use your agency number here -->
+            <AgencyID>test agent</AgencyID>
+          </TravelAgencySender>
+        </Sender>
+      </Party>
+      <Travelers>
+        <Traveler>
+          <AnonymousTraveler>
+            <PTC>ADT</PTC>
+          </AnonymousTraveler>
+        </Traveler>
+      </Travelers>
+      <CoreQuery>
+        <OriginDestinations>
+          <OriginDestination>
+            <Departure>
+              <AirportCode>LHR</AirportCode>
+              <Date>2015-12-20</Date> <!-- Make sure this date is in the future -->
+            </Departure>
+            <Arrival>
+              <AirportCode>AMS</AirportCode>
+            </Arrival>
+          </OriginDestination>
+        </OriginDestinations>
+      </CoreQuery>
+      <Preferences>
+        <Preference>
+          <FarePreferences>
+            <Types>
+              <Type>
+                <Code>759</Code>
+              </Type>
+            </Types>
+          </FarePreferences>
+        </Preference>
+        <Preference>
+          <CabinPreferences>
+            <CabinType>
+              <Code>5</Code>
+            </CabinType>
+          </CabinPreferences>
+        </Preference>
+      </Preferences>
+      <Metadata>
+        <Other>
+          <OtherMetadata>
+            <LanguageMetadatas>
+              <LanguageMetadata MetadataKey="Display">
+                <Application>Display</Application>
+                <Code_ISO>en</Code_ISO>
+              </LanguageMetadata>
+            </LanguageMetadatas>
+          </OtherMetadata>
+        </Other>
+      </Metadata>
+    </AirShoppingRQ>
+  </s:Body>
+</s:Envelope>

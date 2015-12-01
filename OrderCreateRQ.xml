@@ -1,0 +1,150 @@
+<?xml version="1.0"?>
+<s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/">
+    <s:Body>
+        <n:OrderCreateRQ xmlns:n="http://www.iata.org/IATA/EDIST">
+            <n:Document>
+                <n:MessageVersion>1.1</n:MessageVersion>
+            </n:Document>
+            <n:Party>
+                <n:Sender>
+                    <n:TravelAgencySender>
+                        <n:Name>TEST NON IATA AGENT</n:Name>
+                        <n:Contacts>
+                            <n:Contact>
+                                <n:EmailContact>
+                                    <n:Address>AGENT@TRADE.COM</n:Address>
+                                </n:EmailContact>
+                            </n:Contact>
+                        </n:Contacts>
+                        <n:OtherIDs>
+                            <n:OtherID>00007066</n:OtherID> <!-- Use your agency id here -->
+                        </n:OtherIDs>
+                        <n:AgencyID>TEST</n:AgencyID>
+                    </n:TravelAgencySender>
+                </n:Sender>
+            </n:Party>
+            <n:Query>
+                <n:Passengers>
+                    <n:Passenger ObjectKey="T1">
+                        <n:PTC>ADT</n:PTC>
+                        <n:Name>
+                            <n:Surname>TEST</n:Surname>
+                            <n:Given>ANDY</n:Given>
+                            <n:Title>MR</n:Title>
+                        </n:Name>
+                        <n:Contacts>
+                            <n:Contact>
+                                <n:EmailContact>
+                                    <n:Address>AGENT@TRADE.COM</n:Address>
+                                </n:EmailContact>
+                                <n:PhoneContact>
+                                    <n:Application>Home</n:Application>
+                                    <n:Number CountryCode="44">2087123456</n:Number>
+                                </n:PhoneContact>
+                            </n:Contact>
+                        </n:Contacts>
+                        <n:AdditionalRoles PaymentContactInd="true"/>
+                    </n:Passenger>
+                </n:Passengers>
+                <n:OrderItems>
+                    <n:ShoppingResponse>
+                        <n:Owner>BA</n:Owner>
+                        <n:ResponseID>2015-12-01T17:07:12.393Z</n:ResponseID> <!-- use ResponseID obtained from AirShoppingRS -->
+                        <n:Offers>
+                            <n:Offer>
+                                <n:OfferID Owner="BA">OFFER1</n:OfferID> <!-- Optional: select your offer -->
+                                <n:OfferItems>
+                                    <n:OfferItem>
+                                        <n:OfferItemID Owner="BA">1</n:OfferItemID>
+                                    </n:OfferItem>
+                                </n:OfferItems>
+                            </n:Offer>
+                        </n:Offers>
+                    </n:ShoppingResponse>
+                    <n:OfferItem>
+                        <n:OfferItemID Owner="BA">1</n:OfferItemID>
+                        <n:OfferItemType>
+                            <n:DetailedFlightItem refs="T1">
+                                <n:Price> <!-- change those prices and the rest of details below to the ones returned in FlightPriceRS -->
+                                    <n:BaseAmount Code="CHF">116.00</n:BaseAmount> 
+                                    <n:Taxes>
+                                        <n:Total Code="CHF">40.50</n:Total>
+                                    </n:Taxes>
+                                </n:Price>
+                                <n:OriginDestination>
+                                    <n:Flight>
+                                        <n:SegmentKey>BA2764</n:SegmentKey>
+                                        <n:Departure>
+                                            <n:AirportCode>LGW</n:AirportCode>
+                                            <n:Date>2015-12-20</n:Date>
+                                        </n:Departure>
+                                        <n:Arrival>
+                                            <n:AirportCode>AMS</n:AirportCode>
+                                            <n:Date>2015-12-20</n:Date>
+                                        </n:Arrival>
+                                        <n:MarketingCarrier>
+                                            <n:AirlineID>BA</n:AirlineID>
+                                            <n:FlightNumber>2764</n:FlightNumber>
+                                        </n:MarketingCarrier>
+                                        <n:ClassOfService>
+                                            <n:Code>L</n:Code>
+                                            <n:MarketingName>Euro Traveller</n:MarketingName>
+                                        </n:ClassOfService>
+                                    </n:Flight>
+                                </n:OriginDestination>
+                            </n:DetailedFlightItem>
+                        </n:OfferItemType>
+                    </n:OfferItem>
+                </n:OrderItems>
+                <n:Payments>
+                    <n:Payment>
+                        <n:Method>
+                            <n:PaymentCard>
+                                <n:CardType>Credit</n:CardType>
+                                <n:CardCode>VI</n:CardCode>
+                                <n:CardNumber>4111111111111111</n:CardNumber>
+                                <n:SeriesCode>123</n:SeriesCode>
+                                <n:CardHolderName refs="T1"/>
+                                <n:CardHolderBillingAddress>
+                                    <n:Street>United Kingdom</n:Street>
+                                    <n:Street>United Kingdom</n:Street>
+                                    <n:PostalCode>TW4 7NF</n:PostalCode>
+                                    <n:CountryCode>GB</n:CountryCode>
+                                </n:CardHolderBillingAddress>
+                                <n:Amount Code="CHF" Taxable="true">0</n:Amount>
+                                <n:EffectiveExpireDate>
+                                    <n:Effective>1212</n:Effective>
+                                    <n:Expiration>1220</n:Expiration>
+                                </n:EffectiveExpireDate>
+                            </n:PaymentCard>
+                        </n:Method>
+                        <n:Amount Code="CHF">156.50</n:Amount> <!-- change this to TotalAmount from FlightPriceRS -->
+                    </n:Payment>
+                </n:Payments>
+                <n:Metadata>
+                    <n:Other>
+                        <n:OtherMetadata>
+                            <n:LanguageMetadatas>
+                                <n:LanguageMetadata MetadataKey="met">
+                                    <n:Application>Display</n:Application>
+                                    <n:Code_ISO>en</n:Code_ISO>
+                                </n:LanguageMetadata>
+                                <n:LanguageMetadata MetadataKey="meta">
+                                    <n:Application>Written</n:Application>
+                                    <n:Code_ISO>en</n:Code_ISO>
+                                </n:LanguageMetadata>
+                            </n:LanguageMetadatas>
+                        </n:OtherMetadata>
+                        <n:OtherMetadata>
+                            <n:CurrencyMetadatas>
+                                <n:CurrencyMetadata MetadataKey="CHF">
+                                    <n:Decimals>2</n:Decimals>
+                                </n:CurrencyMetadata>
+                            </n:CurrencyMetadatas>
+                        </n:OtherMetadata>
+                    </n:Other>
+                </n:Metadata>
+            </n:Query>
+        </n:OrderCreateRQ>
+    </s:Body>
+</s:Envelope>

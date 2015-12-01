@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/">
+    <s:Body>
+        <n:OrderRetrieveRQ xmlns:n="http://www.iata.org/IATA/EDIST" Version="1.1">
+            <n:Document>
+                <n:ReferenceVersion>1.1</n:ReferenceVersion>
+            </n:Document>
+            <n:Party>
+                <n:Sender>
+                    <n:TravelAgencySender>
+                        <n:Name>TEST NON IATA AGENT</n:Name>
+                        <n:Contacts>
+                            <n:Contact>
+                                <n:EmailContact>
+                                    <n:Address>AGENT@TRADE.COM</n:Address>
+                                </n:EmailContact>
+                            </n:Contact>
+                        </n:Contacts>
+                        <n:OtherIDs>
+                            <n:OtherID>00007066</n:OtherID>
+                        </n:OtherIDs>
+                        <n:AgencyID>TEST</n:AgencyID>
+                    </n:TravelAgencySender>
+                </n:Sender>
+            </n:Party>
+            <n:Query>
+                <n:Filters>
+                    <n:OrderID Owner="BA">23CRMB</n:OrderID> <!-- OrderID obtained from OrderViewRS -->
+                </n:Filters>
+            </n:Query>
+        </n:OrderRetrieveRQ>
+    </s:Body>
+</s:Envelope>

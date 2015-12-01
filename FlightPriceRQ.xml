@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/">
+  <s:Body xmlns="http://www.iata.org/IATA/EDIST">
+    <FlightPriceRQ>
+      <Document>
+        <MessageVersion>1.3</MessageVersion>
+      </Document>
+      <Party>
+        <Sender>
+          <TravelAgencySender>
+            <Name>test agent</Name>
+            <OtherIDs>
+              <OtherID>00007066</OtherID> <!-- Use your agency id here -->
+            </OtherIDs>
+            <AgencyID>test agent</AgencyID>
+          </TravelAgencySender>
+        </Sender>
+      </Party>
+      <Travelers>
+        <Traveler>
+          <AnonymousTraveler ObjectKey="SH1">
+            <PTC>ADT</PTC>
+          </AnonymousTraveler>
+        </Traveler>
+      </Travelers>
+      <Query>
+        <OriginDestination>
+          <Flight>
+            <Departure>
+              <AirportCode>LGW</AirportCode> <!-- Change airports, dates, carrier and class of service according to AirShoppingRS -->
+              <Date>2015-12-20</Date>
+            </Departure>
+            <Arrival>
+              <AirportCode>AMS</AirportCode>
+              <Date>2015-12-20</Date>
+            </Arrival>
+            <MarketingCarrier>
+              <AirlineID>BA</AirlineID>
+              <FlightNumber>2764</FlightNumber>
+            </MarketingCarrier>
+            <Equipment>
+              <AircraftCode>320</AircraftCode>
+            </Equipment>
+            <ClassOfService>
+              <Code>L</Code>
+              <MarketingName>Euro Traveller</MarketingName>
+            </ClassOfService>
+          </Flight>
+        </OriginDestination>
+      </Query>
+      <Metadata>
+        <Other>
+          <OtherMetadata>
+            <LanguageMetadatas>
+              <LanguageMetadata MetadataKey="Display">
+                <Application>Display</Application>
+                <Code_ISO>en</Code_ISO>
+              </LanguageMetadata>
+            </LanguageMetadatas>
+          </OtherMetadata>
+        </Other>
+      </Metadata>
+    </FlightPriceRQ>
+  </s:Body>
+</s:Envelope>
